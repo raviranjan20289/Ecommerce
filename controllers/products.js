@@ -11,17 +11,19 @@ exports.getAllProducts = async (req, res)=>{
   }
 }
 
-exports.addProduct = async (req, res)=>{
-   try{
-     const data = await Product.create(req.body);
-     console.log(data);
-     res.status(201).json({data});
+exports.addProduct = async (req, res) => {
+  try {
+    const { name, price, quantity } = req.body;
+    const imageUrl = req.file.path;
     
-   }catch(err){
+    const data = await Product.create({ name, price, quantity, imageUrl });
+    console.log(data);
+    res.status(201).json({ data });
+  } catch (err) {
     console.log(err);
-   }
-}
-
+    res.status(500).json({ error: 'Server error' });
+  }
+};
 exports.getSigleProduct = async (req, res)=>{
     try{
         const id = req.params.id;
