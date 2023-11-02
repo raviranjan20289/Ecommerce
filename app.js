@@ -1,6 +1,13 @@
 const express = require('express');
 
 const app = express();
+require('./db/connect');
+
+const productRoutes = require('./routes/products');
+
+app.use(express.json());
+
+app.use('/api/product', productRoutes);
 
 app.get('/', (req, res)=>{
     res.send("hello from Ecommerce");
