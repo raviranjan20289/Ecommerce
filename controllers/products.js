@@ -1,4 +1,5 @@
 const Product = require('../models/product.model');
+const User = require('../models/users')
 
 exports.getAllProducts = async (req, res)=>{
   try{
@@ -34,3 +35,43 @@ exports.getSigleProduct = async (req, res)=>{
         console.log(err);
     }
 }
+
+exports.rateProduct = async (req, res) => {
+  try {
+    const { userId, productId, ratings } = req.body;
+
+    // Check if the user exists
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Check if the product exists
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    // Add each rating in the array to the product's ratings
+    ratings.forEach((ratingItem) => {
+      const existingRatingIndex = product.ratings.findIndex(
+        (r) => r.userId.toString() === ratingItem.userId
+      );
+
+      if (existingRatingIndex !== -1) {
+        // If the user has already rated, update their rating
+        product.ratings[existingRatingIndex].rating = ratingItem.rating;
+      } else {
+        // If the user has not rated, add their rating
+        product.ratings.push({ userId: ratingItem.userId, rating: ratingItem.rating });
+      }
+    });
+
+    await product.save();
+
+    res.status(200).json({ message: 'Product rating updated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};

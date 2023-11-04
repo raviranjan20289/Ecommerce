@@ -1,5 +1,5 @@
 const User = require('../models/users');
-
+const jwt = require('jsonwebtoken');
 exports.signUp = async (req, res)=>{
   try{
     const {name, email, password} = req.body;
@@ -17,10 +17,10 @@ exports.signIn = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email: email, password: password });
-  console.log(user);
+  const token = jwt.sign({ email: email}, 'process.env.Secret_Key');
+  console.log(token)
   if (user) {
-      console.log("hii");
-      res.status(200).send("Login successful");
+      res.status(200).send(token);
   } else {
       res.status(401).send("Invalid Credentials");
   }
