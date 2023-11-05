@@ -1,40 +1,37 @@
-const Product = require('../models/product.model');
-const User = require('../models/users')
+const Product = require("../models/product.model");
+const User = require("../models/users");
 
-exports.getAllProducts = async (req, res)=>{
-  try{
-   const result = await Product.find();
-   console.log(result);
-   res.status(200).json({result});
-    
-  }catch(err){
+exports.getAllProducts = async (req, res) => {
+  try {
+    const result = await Product.find();
+    res.status(200).json({ result });
+  } catch (err) {
     console.log(err);
   }
-}
+};
 
 exports.addProduct = async (req, res) => {
   try {
     const { name, price, quantity } = req.body;
     const imageUrl = req.file.path;
-    
+
     const data = await Product.create({ name, price, quantity, imageUrl });
     console.log(data);
     res.status(201).json({ data });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: "Server error" });
   }
 };
-exports.getSigleProduct = async (req, res)=>{
-    try{
-        const id = req.params.id;
-       const result = await Product.find({_id:id});
-       res.status(200).json({result});
-
-    }catch(err){
-        console.log(err);
-    }
-}
+exports.getSigleProduct = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await Product.find({ _id: id });
+    res.status(200).json({ result });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 exports.rateProduct = async (req, res) => {
   try {
@@ -43,13 +40,13 @@ exports.rateProduct = async (req, res) => {
     // Check if the user exists
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
 
     // Check if the product exists
     const product = await Product.findById(productId);
     if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+      return res.status(404).json({ error: "Product not found" });
     }
 
     // Add each rating in the array to the product's ratings
@@ -63,15 +60,18 @@ exports.rateProduct = async (req, res) => {
         product.ratings[existingRatingIndex].rating = ratingItem.rating;
       } else {
         // If the user has not rated, add their rating
-        product.ratings.push({ userId: ratingItem.userId, rating: ratingItem.rating });
+        product.ratings.push({
+          userId: ratingItem.userId,
+          rating: ratingItem.rating,
+        });
       }
     });
 
     await product.save();
 
-    res.status(200).json({ message: 'Product rating updated successfully' });
+    res.status(200).json({ message: "Product rating updated successfully" });
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };

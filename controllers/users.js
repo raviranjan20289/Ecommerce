@@ -17,8 +17,9 @@ exports.signIn = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email: email, password: password });
-  const token = jwt.sign({ email: email}, 'process.env.Secret_Key');
-  console.log(token)
+  const token = jwt.sign({ userId:user._id, email: email}, 'process.env.Secret_Key', {expiresIn:'1hr'});
+  console.log(token);
+  
   if (user) {
       res.status(200).send(token);
   } else {
