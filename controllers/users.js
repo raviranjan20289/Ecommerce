@@ -23,6 +23,6 @@ exports.signIn = async (req, res) => {
   if (user) {
       res.status(200).send(token);
   } else {
-      res.status(401).send("Invalid Credentials");
+      res.status(400).send("Incorrect Credentials");
   }
 }
