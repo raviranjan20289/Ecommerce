@@ -22,15 +22,22 @@ const cartRoutes = require("./routes/cart");
 
 const swaggerDocument = require("./swagger.json");
 
+const loggerMiddleware = require('./middleware/logger');
+
 app.use(express.json());
 
 app.use("/api-docs", swagger.serve, swagger.setup(swaggerDocument));
 
-app.use("/api/product", productRoutes);
+//implementing loggerMiddleware on application level , but we can also implement on specific routes as well 
+app.use(loggerMiddleware);
+
+app.use("/api/product",productRoutes);
 
 app.use("/api/user", userRoutes);
 
 app.use("/api/cart", cartRoutes);
+
+
 
 app.get("/", (req, res) => {
   res.send("hello from Ecommerce");
