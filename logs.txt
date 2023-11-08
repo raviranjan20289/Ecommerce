@@ -1,1 +1,12 @@
 {"level":"info","message":"/api/cart/getCartItem - {}","service":"request-logging","timestamp":"2023-11-07T11:58:11.642Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test1\",\"email\":\"test1@gmail.com\",\"password\":1234}","service":"request-logging","timestamp":"2023-11-08T10:04:36.340Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test1\",\"email\":\"test1@gmail.com\",\"password\":1234}","service":"request-logging","timestamp":"2023-11-08T10:08:06.751Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test1\",\"email\":\"test1@gmail.com\",\"password\":1234}","service":"request-logging","timestamp":"2023-11-08T10:15:22.826Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test1\",\"email\":\"test1@gmail.com\",\"password\":1234}","service":"request-logging","timestamp":"2023-11-08T10:23:41.490Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test1\",\"email\":\"test1@gmail.com\",\"password\":\"12345\"}","service":"request-logging","timestamp":"2023-11-08T10:34:03.082Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test11\",\"email\":\"test11@gmail.com\",\"password\":\"12345\"}","service":"request-logging","timestamp":"2023-11-08T10:35:36.075Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test3\",\"email\":\"test3@gmail.com\",\"password\":12345}","service":"request-logging","timestamp":"2023-11-08T10:36:41.532Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test3\",\"email\":\"test3@gmail.com\",\"password\":12345}","service":"request-logging","timestamp":"2023-11-08T10:37:38.149Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test4\",\"email\":\"test4@gmail.com\",\"password\":12345}","service":"request-logging","timestamp":"2023-11-08T10:38:04.238Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test4\",\"email\":\"test6@gmail.com\",\"password\":12345}","service":"request-logging","timestamp":"2023-11-08T10:38:45.785Z"}
+{"level":"info","message":"/api/user/signUp - {\"name\":\"test4\",\"email\":\"test7@gmail.com\",\"password\":\"12345\"}","service":"request-logging","timestamp":"2023-11-08T10:39:17.892Z"}
