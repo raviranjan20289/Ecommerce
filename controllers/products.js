@@ -75,3 +75,24 @@ exports.rateProduct = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+
+exports.filterProducts = async (req, res)=>{
+  try{
+  
+    const { minPrice, maxPrice, minRatings } = req.query;
+
+    const filter = {};
+    if (minPrice) filter.price = { $gte: parseFloat(minPrice) };
+    if (maxPrice) filter.price = { ...filter.price, $lte: parseFloat(maxPrice) };
+    if (minRatings) filter['ratings.rating'] = { $gte: parseInt(minRatings) };
+
+    const products = await Product.find(filter);
+    res.status(200).res.json(products);
+     
+
+  }catch(err){
+    console.error("Error is: ", err);
+    res.status(500).send("Server Error");
+  }
+}

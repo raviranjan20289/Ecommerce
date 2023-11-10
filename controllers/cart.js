@@ -40,7 +40,7 @@ exports.updateCart = async (req, res) => {
     const options = { new: true };
     const updateCartItem = await Cart.findOneAndUpdate(filter, update, options);
     if (!updateCartItem) {
-      res.status(404).json({ message: "cart item not found" });
+      return res.status(404).json({ message: "cart item not found" });
     }
     res.status(200).json({ message: "Cart Updated Successfully" });
   } catch (err) {

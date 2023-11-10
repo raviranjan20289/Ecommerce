@@ -10,3 +10,12 @@
 {"level":"info","message":"/api/user/signUp - {\"name\":\"test4\",\"email\":\"test4@gmail.com\",\"password\":12345}","service":"request-logging","timestamp":"2023-11-08T10:38:04.238Z"}
 {"level":"info","message":"/api/user/signUp - {\"name\":\"test4\",\"email\":\"test6@gmail.com\",\"password\":12345}","service":"request-logging","timestamp":"2023-11-08T10:38:45.785Z"}
 {"level":"info","message":"/api/user/signUp - {\"name\":\"test4\",\"email\":\"test7@gmail.com\",\"password\":\"12345\"}","service":"request-logging","timestamp":"2023-11-08T10:39:17.892Z"}
+{"level":"info","message":"/api/product/filter?minPrice=30000&maxPrice=50000&minRatings=4 - {}","service":"request-logging","timestamp":"2023-11-10T07:48:03.136Z"}
+{"level":"info","message":"/api/product/filter?minPrice=30000&maxPrice=50000&minRatings=4 - {}","service":"request-logging","timestamp":"2023-11-10T07:48:42.752Z"}
+{"level":"info","message":"/api/cart/updateCartItem - {\"productId\":\"65465bea93caf3f1f0dc2f8e\",\"quantity\":\"15\",\"price\":48000}","service":"request-logging","timestamp":"2023-11-10T07:53:48.831Z"}
+{"level":"info","message":"/api/cart/updateCartItem - {\"productId\":\"65465bea93caf3f1f0dc2f8e\",\"quantity\":\"15\"}","service":"request-logging","timestamp":"2023-11-10T07:54:55.238Z"}
+{"level":"info","message":"/api/cart/updateCartItem - {\"productId\":\"65465bc6815306c121b2cab9\",\"quantity\":\"6\"}","service":"request-logging","timestamp":"2023-11-10T07:55:51.405Z"}
+{"level":"info","message":"/api/cart/updateCartItem - {\"productId\":\"65465bc6815306c121b2cab9\",\"quantity\":\"6\"}","service":"request-logging","timestamp":"2023-11-10T07:56:43.392Z"}
+{"level":"info","message":"/api/cart/cartItems - {\"productId\":\"6546788ee0a5d284fc9bc1a0\",\"quantity\":\"6\"}","service":"request-logging","timestamp":"2023-11-10T08:00:18.357Z"}
+{"level":"info","message":"/api/cart/updateCartItem - {\"productId\":\"6546788ee0a5d284fc9bc1a0\",\"quantity\":\"7\"}","service":"request-logging","timestamp":"2023-11-10T08:01:11.800Z"}
+{"level":"info","message":"/api/cart/updateCartItem - {\"productId\":\"6546788ee0a5d284fc9bc1a0\",\"quantity\":\"7\"}","service":"request-logging","timestamp":"2023-11-10T08:01:33.411Z"}

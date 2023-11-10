@@ -36,4 +36,10 @@ router.post(
   productController.rateProduct
 );
 
+router.get(
+  "/filter",
+  userAuthentication.authorize,
+  productController.filterProducts
+);
+
 module.exports = router;
