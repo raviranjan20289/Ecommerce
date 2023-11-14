@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const Cart = require("../models/cart.model");
 
 exports.postCart = async (req, res) => {
@@ -5,8 +6,12 @@ exports.postCart = async (req, res) => {
     const { productId, quantity } = req.body;
     const userId = req.userId;
     if (!userId) {
-      res.status(401).send("unauthorized requrest");
+     return res.status(401).send("unauthorized requrest");
     }
+    const isValidObjectId = mongoose.Types.ObjectId.isValid(productId);
+        if (!isValidObjectId) {
+          return res.status(400).send("Invalid productId");
+        }
     const result = await Cart.create({ productId, userId, quantity });
 
     res.status(201).json({ result });
@@ -15,6 +20,29 @@ exports.postCart = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+// exports.postCart = async (req, res) => {
+//   try {
+//     const { productId, quantity } = req.body;
+//     const userId = req.userId;
+
+//     if (!userId) {
+//       return res.status(401).send("Unauthorized request");
+//     }
+
+//     // Ensure productId is a valid ObjectId
+//     const isValidObjectId = mongoose.Types.ObjectId.isValid(productId);
+//     if (!isValidObjectId) {
+//       return res.status(400).send("Invalid productId");
+//     }
+
+//     const result = await Cart.create({ productId, userId, quantity });
+//     res.status(201).json({ result });
+//   } catch (err) {
+//     console.error("Error while creating Cart:", err);
+//     res.status(500).send("Server Error finds");
+//   }
+// };
 
 exports.getCartItem = async (req, res) => {
   try {

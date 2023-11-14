@@ -21,6 +21,7 @@ router.get("/", userAuthentication.authorize, productController.getAllProducts);
 router.post(
   "/add-product",
   upload.single("imageUrl"),
+  userAuthentication.authorize,
   productController.addProduct
 );
 

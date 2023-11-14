@@ -20,6 +20,8 @@ const userRoutes = require("./routes/users");
 
 const cartRoutes = require("./routes/cart");
 
+const orderRoutes = require("./routes/order");
+
 const swaggerDocument = require("./swagger.json");
 
 const loggerMiddleware = require('./middleware/logger');
@@ -36,6 +38,8 @@ app.use("/api/product",productRoutes);
 app.use("/api/user", userRoutes);
 
 app.use("/api/cart", cartRoutes);
+
+app.use("/api/order", orderRoutes);
 
 
 

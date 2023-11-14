@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const User = require("../models/users");
 
 const productSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
     trim: true,
