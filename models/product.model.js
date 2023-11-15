@@ -40,6 +40,11 @@ const productSchema = new mongoose.Schema({
       },
     },
   ],
+
+  quantityInStock: {
+    type:Number,
+    required:true
+  }
 });
 
 module.exports = mongoose.model("Product", productSchema);

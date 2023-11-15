@@ -12,10 +12,10 @@ exports.getAllProducts = async (req, res) => {
 
 exports.addProduct = async (req, res) => {
   try {
-    const { name, price, quantity } = req.body;
+    const { name, price, quantity, quantityInStock } = req.body;
     const imageUrl = req.file.path;
 
-    const data = await Product.create({ name, price, quantity, imageUrl });
+    const data = await Product.create({ name, price, quantity, quantityInStock,imageUrl });
     console.log(data);
     res.status(201).json({ data });
   } catch (err) {
